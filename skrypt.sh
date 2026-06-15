@@ -31,13 +31,13 @@ POMOC
 }
 
 case "$1" in
-    --date)
+    --date|-d)
         show_date
         ;;
-    --logs)
+    --logs|-l)
         make_logs "$2"
         ;;
-    --help)
+    --help|-h)
         show_help
         ;;
     *)
