@@ -19,6 +19,20 @@ make_logs() {
     echo "Utworzono $ilosc plikow log."
 }
 
+make_errors() {
+    ilosc="${1:-100}"
+    for ((x=1; x<=ilosc; x++)); do
+        mkdir -p "error${x}"
+        plik="error${x}/error${x}.txt"
+        {
+            echo "Nazwa pliku: $plik"
+            echo "Utworzony przez skrypt: $SCRIPT_NAME"
+            echo "Data utworzenia: $(date)"
+        } > "$plik"
+    done
+    echo "Utworzono $ilosc katalogow error."
+}
+
 do_init() {
     repo_url=$(git config --get remote.origin.url 2>/dev/null)
     if [ -z "$repo_url" ]; then
@@ -48,6 +62,9 @@ case "$1" in
         ;;
     --logs|-l)
         make_logs "$2"
+        ;;
+    --error|-e)
+        make_errors "$2"
         ;;
     --init)
         do_init
