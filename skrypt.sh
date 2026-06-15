@@ -19,6 +19,18 @@ make_logs() {
     echo "Utworzono $ilosc plikow log."
 }
 
+do_init() {
+    repo_url=$(git config --get remote.origin.url 2>/dev/null)
+    if [ -z "$repo_url" ]; then
+        echo "Brak skonfigurowanego remote 'origin' - nie ma czego sklonowac."
+        return 1
+    fi
+    git clone "$repo_url"
+    nazwa=$(basename "$repo_url" .git)
+    export PATH="$PATH:$(pwd)/$nazwa"
+    echo "Sklonowano repo i dodano do PATH: $(pwd)/$nazwa"
+}
+
 show_help() {
     cat <<POMOC
 Uzycie: $SCRIPT_NAME [OPCJA] [ARGUMENT]
@@ -36,6 +48,9 @@ case "$1" in
         ;;
     --logs|-l)
         make_logs "$2"
+        ;;
+    --init)
+        do_init
         ;;
     --help|-h)
         show_help
