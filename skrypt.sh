@@ -7,7 +7,8 @@ show_date() {
 }
 
 make_logs() {
-    for ((x=1; x<=100; x++)); do
+    ilosc="${1:-100}"
+    for ((x=1; x<=ilosc; x++)); do
         plik="log${x}.txt"
         {
             echo "Nazwa pliku: $plik"
@@ -15,7 +16,7 @@ make_logs() {
             echo "Data utworzenia: $(date)"
         } > "$plik"
     done
-    echo "Utworzono 100 plikow log."
+    echo "Utworzono $ilosc plikow log."
 }
 
 case "$1" in
@@ -23,7 +24,7 @@ case "$1" in
         show_date
         ;;
     --logs)
-        make_logs
+        make_logs "$2"
         ;;
     *)
         echo "Nieznana opcja: $1"
