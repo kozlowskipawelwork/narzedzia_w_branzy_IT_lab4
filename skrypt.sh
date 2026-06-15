@@ -19,6 +19,17 @@ make_logs() {
     echo "Utworzono $ilosc plikow log."
 }
 
+show_help() {
+    cat <<POMOC
+Uzycie: $SCRIPT_NAME [OPCJA] [ARGUMENT]
+
+Dostepne opcje:
+  --date           Wyswietla dzisiejsza date
+  --logs [N]       Tworzy N plikow logX.txt (domyslnie 100)
+  --help           Wyswietla te pomoc
+POMOC
+}
+
 case "$1" in
     --date)
         show_date
@@ -26,8 +37,12 @@ case "$1" in
     --logs)
         make_logs "$2"
         ;;
+    --help)
+        show_help
+        ;;
     *)
         echo "Nieznana opcja: $1"
+        show_help
         exit 1
         ;;
 esac
