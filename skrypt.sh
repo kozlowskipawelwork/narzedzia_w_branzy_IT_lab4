@@ -52,6 +52,8 @@ Uzycie: $SCRIPT_NAME [OPCJA] [ARGUMENT]
 Dostepne opcje:
   --date, -d           Wyswietla dzisiejsza date
   --logs, -l [N]       Tworzy N plikow logX.txt (domyslnie 100)
+  --error, -e [N]      Tworzy N katalogow errorX/errorX.txt (domyslnie 100)
+  --init               Klonuje repozytorium do biezacego katalogu i dodaje do PATH
   --help, -h           Wyswietla te pomoc
 POMOC
 }
