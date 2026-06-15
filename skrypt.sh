@@ -50,9 +50,9 @@ show_help() {
 Uzycie: $SCRIPT_NAME [OPCJA] [ARGUMENT]
 
 Dostepne opcje:
-  --date           Wyswietla dzisiejsza date
-  --logs [N]       Tworzy N plikow logX.txt (domyslnie 100)
-  --help           Wyswietla te pomoc
+  --date, -d           Wyswietla dzisiejsza date
+  --logs, -l [N]       Tworzy N plikow logX.txt (domyslnie 100)
+  --help, -h           Wyswietla te pomoc
 POMOC
 }
 
